@@ -1,6 +1,7 @@
 from . import schemas, models
 from sqlalchemy.orm import Session
 from .auth import AuthHandler
+from datetime import datetime
 
 
 auth_handler = AuthHandler()
@@ -19,3 +20,10 @@ def create_user(db: Session, user: schemas.User):
     db.commit()
     db.refresh(db_user)
     return db_user
+
+def update_login_date(db: Session, username: str):
+    user = get_user_by_username(db, username)
+    user.last_login = datetime.now()
+    db.commit()
+    db.refresh(user)
+    return user.last_login
