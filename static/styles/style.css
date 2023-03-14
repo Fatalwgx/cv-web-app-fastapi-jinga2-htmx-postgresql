@@ -189,7 +189,7 @@ h3 {
 }
 
 .top-bar {
-  height: 220px;
+  height: 500px;
   background-color: #848484;
   color: #fff;
 }
@@ -405,7 +405,7 @@ h3 {
 }
 
 .slots-buffers {
-  width: 25%;
+  width: 27%;
   height: 100%;
   padding-top: 40px;
   align-self: center;
@@ -417,71 +417,43 @@ h3 {
 }
 
 .digits {
-  float:left;
+  float: left;
   list-style-type: none;
   font-size: 1em;
   line-height: 1em;
 }
 
 .digits-first {
-  margin-top: -4em; /* number 4! */
+  margin-top: -7em; /* number 4! */
 }
 
 .digits-second {
-  margin-top: 0em; /* number 0! */
+  margin-top: -8em; /* number 0! */
 }
 
 .digits-third {
-  margin-top: -4em; /* number 4! */
+  margin-top: -9em; /* number 4! */
 }
 
 .digits {
   animation-duration: 2s;
   animation-timing-function: ease;
-  animation-delay: 2.2s;
+  animation-delay: 0.2s;
   animation-fill-mode: forwards;
 }
 
-.lucky1 {
-  animation-name: lucky1;
+.lucky {
+  animation-name: lucky;
 }
 
-.lucky2 {
-  animation-name: lucky2;
-}
-
-.lucky3 {
-  animation-name: lucky3;
-}
-
-.lucky4 {
-  animation-name: lucky4;
-}
 
 /* Animations */
-@keyframes lucky1 {
+@keyframes lucky {
   100% {
-      margin-top: -1em;
+      margin-top: -0em;
   }
 }
 
-@keyframes lucky2 {
-  100% {
-      margin-top: -2em;
-  }
-}
-
-@keyframes lucky3 {
-  100% {
-      margin-top: -3em;
-  }
-}
-
-@keyframes lucky4 {
-  100% {
-      margin-top: -4em;
-  }
-}
 
 .btn1{
   background-color: #848484; 

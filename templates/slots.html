@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../static/styles/style.css">
     <script src="../static/htmx.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
 </head>
 <body>
     <!-- partial:index.partial.html -->
@@ -44,10 +45,15 @@
         <div class="rela-block">
             <div class="slots-controls">
                 <button class="btn1"
-                hx-get="/slots/start"
+                hx-get="/slots/spin"
                 hx-trigger="click"
                 hx-target="#slots-output"
                 >Spin</button>
+                <button class="btn1"
+                hx-get="/user?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJleHAiOjE2Nzg4NDQ2MDB9.2_uh4VW-EvkRHBo9LgvnZGT1XaGM-XZ-qEH4HuhWiEw"
+                hx-trigger="click"
+                hx-target="#slots-output"
+                >Get User</button>
             </div>
         </div>
     </div>

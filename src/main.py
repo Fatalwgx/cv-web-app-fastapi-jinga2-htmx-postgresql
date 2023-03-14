@@ -13,7 +13,7 @@ from .auth import AuthHandler
 from .schemas import Token, User
 from .database import get_db, Base, engine
 from .models import Accounts
-from . import crud, models, schemas
+from . import crud, models, schemas, slots
 
 
 #TODO replace plain model and schema calls with models. schemas.
@@ -83,4 +83,11 @@ async def start_slots_game(request: Request):
     context = {"request": request}
     return templates.TemplateResponse("lines.html", context)
 
-# 11512124
+
+@app.get("/slots/spin", tags=[Tags.slots])
+async def do_spin(request: Request):
+    columns, winnings = slots.spin()
+    context = {"request": request, "winnings": winnings, "columns": columns}
+    return templates.TemplateResponse("lines.html", context)
+
+# 215121255

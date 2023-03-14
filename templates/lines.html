@@ -1,39 +1,41 @@
-{% for line in lines %}
-<div id="counter" class="animated" style="font-size: 700%; ">
-    <ul id="line-1" class="digits digits-first lucky1">
-        <li> 0
-        <li> 1
-        <li> 2
-        <li> 3
-        <li> 4
-        <li> 5
-        <li> 6
-        <li> 7
-        <li> 8
-        <li> 9
+{% for column in columns %}
+<div id="counter" classes="toggle lucky" style="font-size: 800%; color: black;">
+    <ul id="line-1" class="digits digits-first lucky">
+        <li> {{ column[0] }}
+        <li> D
+        <li> C
+        <li> B
+        <li> B
+        <li> A
+        <li> D
+        <li> A
+        <li> C
+        <li> D
     </ul>
-    <ul id="line-2" class="digits digits-second lucky2">
-        <li> 0
-        <li> 1
-        <li> 2
-        <li> 3
-        <li> 4
-        <li> 5
-        <li> 6
-        <li> 7
-        <li> 8
-        <li> 9
+    <ul id="line-2" class="digits digits-second lucky">
+        <li> {{ column[1] }}
+        <li> A
+        <li> C
+        <li> D
+        <li> D
+        <li> A
+        <li> B
+        <li> C
+        <li> D
+        <li> B
     </ul>
-    <ul id="line-3" class="digits digits-third lucky3">
-        <li> 0
-        <li> 1
-        <li> 2
-        <li> 3
-        <li> 4
-        <li> 5
-        <li> 6
-        <li> 7
-        <li> 8
-        <li> 9
+    <ul id="line-3" class="digits digits-third lucky">
+        <li> {{ column[2] }}
+        <li> B
+        <li> C
+        <li> D
+        <li> B
+        <li> A
+        <li> A
+        <li> B
+        <li> C
+        <li> D
     </ul>
+</div>
 {% endfor %}
+<p class="winnings" style="color: black;">Profit: {{ winnings }} </p>

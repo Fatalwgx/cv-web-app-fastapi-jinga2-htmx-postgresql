@@ -32,4 +32,4 @@ class Vault(Base):
     __tablename__ = 'vault'
 
     account_id = Column(Integer, ForeignKey(Accounts.id), primary_key=True)
-    balance = Column(Integer, nullable=False, default=0)
+    balance = Column(Integer, nullable=False, default=100)
