@@ -1,7 +1,7 @@
 import uvicorn
 import os
 from fastapi import FastAPI, Request, Depends, HTTPException, status
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.security import OAuth2PasswordRequestForm
@@ -14,6 +14,7 @@ from .schemas import Token, User
 from .database import get_db, Base, engine
 from .models import Accounts
 from . import crud, models, schemas, slots
+from helpers import files
 
 
 #TODO replace plain model and schema calls with models. schemas.
@@ -35,21 +36,31 @@ class Tags(Enum):
     slots = "Slots"
     editor = "Editor"
     projects = "Projects"
+    files = "Files"
 
 
 @app.get("/", response_class=HTMLResponse, tags=[Tags.pages])
 async def home_page(request: Request):
-    return templates.TemplateResponse("home.html", {"request": request, "present": datetime.now().strftime('%d.%m.%Y')})
+    context = {"request": request, "present": datetime.now().strftime('%d.%m.%Y')}
+    return templates.TemplateResponse("home.html", context)
 
 
 @app.get("/api", response_class=HTMLResponse, tags=[Tags.pages])
 async def api_page(request: Request):
-    return templates.TemplateResponse("api_docs.html", {"request": request})
+    context = {"request": request}
+    return templates.TemplateResponse("api_docs.html", context)
 
 
 @app.get("/projects/slots", tags=[Tags.slots, Tags.pages])
 async def slots_page(request: Request):
-    return templates.TemplateResponse("slots.html", {"request": request})
+    context = {"request": request}
+    return templates.TemplateResponse("slots.html", context)
+
+
+@app.get("/login", response_class=HTMLResponse, tags=[Tags.pages])
+async def login_page(request: Request):
+    context = {"request": request}
+    return templates.TemplateResponse("login.html", context)
 
 
 @app.post("/user/token", response_model=Token, tags=[Tags.user])
@@ -90,4 +101,10 @@ async def do_spin(request: Request):
     context = {"request": request, "winnings": winnings, "columns": columns}
     return templates.TemplateResponse("lines.html", context)
 
-# 215112515152
+
+@app.get("/files/cv", tags=[Tags.files], response_class=FileResponse)
+async def get_cv():
+    return files.to_resource('lev_zavodskov_cv.pdf')
+
+
+# 2124412

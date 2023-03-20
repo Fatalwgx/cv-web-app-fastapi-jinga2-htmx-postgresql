@@ -1,4 +1,4 @@
-from . import schemas, models
+from . import schemas, models, slots
 from sqlalchemy.orm import Session
 from .auth import AuthHandler
 from datetime import datetime
@@ -27,3 +27,6 @@ def update_login_date(db: Session, username: str):
     db.commit()
     db.refresh(user)
     return user.last_login
+
+def do_spin(db: Session, ):
+    slots.spin()

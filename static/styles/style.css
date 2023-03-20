@@ -125,7 +125,8 @@ h3 {
   color: #fff;
 }
 
-.navbar a.active, .dropdown:hover .dropbtn {
+.navbar a.active,
+.dropdown:hover .dropbtn {
   background-color: #848484;
   color: #fff;
 }
@@ -224,7 +225,8 @@ h3 {
   right: false;
   bottom: 0;
   width: 350px;
-  background-color: #f7e0c1; /* #f7e0c1 */
+  background-color: #f7e0c1;
+  /* #f7e0c1 */
   padding: 320px 30px 50px;
   z-index: 1;
 }
@@ -411,6 +413,12 @@ h3 {
   align-self: center;
 }
 
+.slots-actions {
+  align-items: center;
+  padding: 5px;
+  padding-left: 44%;
+}
+
 #counter {
   height: 1em;
   overflow: hidden;
@@ -424,15 +432,18 @@ h3 {
 }
 
 .digits-first {
-  margin-top: -7em; /* number 4! */
+  margin-top: -7em;
+  /* number 4! */
 }
 
 .digits-second {
-  margin-top: -8em; /* number 0! */
+  margin-top: -8em;
+  /* number 0! */
 }
 
 .digits-third {
-  margin-top: -9em; /* number 4! */
+  margin-top: -9em;
+  /* number 4! */
 }
 
 .digits {
@@ -446,29 +457,118 @@ h3 {
   animation-name: lucky;
 }
 
+.btn1 {
+  background-color: #dbc6aa;
+  border-radius: 29px;
+  border: 1px solid black;
+  color: black;
+  font-size: 15px;
+  padding: 10px 45px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn1:hover {
+  background-color: #f7e0c1;
+  color: black;
+  border-color: black;
+  transition: 0.3s;
+}
+
+.login {
+  width: 50%;
+  float: left;
+  padding: 25px 40px 50px;
+  opacity: 1;
+}
+
+.login input button {
+  float: left;
+}
+
+.register {
+  width: 50%;
+  float: right;
+  padding: 25px 40px 50px;
+}
+
+#registration {
+
+}
+
+.active-div {
+
+}
+
+.actions {
+  padding: 5px;
+}
+
+.faded {
+  opacity: 0;
+}
+
+.show {
+  animation: change-opacity;
+}
+
+@keyframes change-opacity {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+.winnings {
+  color: black;
+}
+
+.show-register {
+  animation-name: show-registration;
+}
+
+.fade-register {
+  animation-name: fade-registration;
+}
+
+.show-login {
+  animation-name: show-logging;
+}
+
+.fade-login {
+  animation-name: fade-logging;
+}
+
+
+li {
+  font-size: 1em;
+  line-height: 1em;
+}
+
+@keyframes show-registration {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes show-logging {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-registration {
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes fade-logging {
+  100% {
+    opacity: 0;
+  }
+}
 
 /* Animations */
 @keyframes lucky {
   100% {
-      margin-top: -0em;
+    margin-top: -0em;
   }
 }
-
-
-.btn1{
-  background-color: #848484; 
-  border-radius: 29px; 
-  border: 1px solid #848484; 
-  color: white; 
-  font-size: 15px; 
- padding: 10px 45px; 
-  cursor: pointer; 
-  transition: 0.3s; 
-  }
-  
-  .btn1:hover { 
-  background-color: #fff; 
-  color: black; 
-  border-color: #fff; 
-  transition: 0.3s; 
- }

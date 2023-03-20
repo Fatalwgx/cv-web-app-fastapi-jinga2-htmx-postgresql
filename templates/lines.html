@@ -1,5 +1,5 @@
 {% for column in columns %}
-<div id="counter" classes="toggle lucky" style="font-size: 800%; color: black;">
+<div id="counter" classes="" style="font-size: 800%; color: black;">
     <ul id="line-1" class="digits digits-first lucky">
         <li> {{ column[0] }}
         <li> D
@@ -8,7 +8,7 @@
         <li> B
         <li> A
         <li> D
-        <li> A
+        <li> ‎
         <li> C
         <li> D
     </ul>
@@ -20,13 +20,13 @@
         <li> D
         <li> A
         <li> B
-        <li> C
         <li> D
-        <li> B
+        <li> ‎
+        <li> D
     </ul>
     <ul id="line-3" class="digits digits-third lucky">
         <li> {{ column[2] }}
-        <li> B
+        <li> A
         <li> C
         <li> D
         <li> B
@@ -34,8 +34,8 @@
         <li> A
         <li> B
         <li> C
-        <li> D
+        <li> ‎
     </ul>
 </div>
 {% endfor %}
-<p class="winnings" style="color: black;">Profit: {{ winnings }} </p>
+<div class="winnings faded" classes="remove faded:2s">Profit: {{ winnings }} </div>

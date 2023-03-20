@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css">
+    <link rel="stylesheet" href="../static/styles/style.css">
+    <script src="https://unpkg.com/htmx.org/dist/ext/class-tools.js"></script>
+    <script src="../static/htmx.min.js"></script>
+</head>
+
+<body>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Raleway:100' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+    <div class="rela-block page">
+        <div class="navbar">
+            <a href="/">Home</a>
+            <div class="dropdown">
+                <button href="#projects" class="dropbtn">Projects
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="/projects/slots">Slot Machine game</a>
+                    <a href="#">Online Doc Editor</a>
+                    <a href="#">Video Restream application</a>
+                </div>
+            </div>
+            <a href="#files">Files</a>
+            <a href="/api">API Docs</a>
+            <a style="float: right" href="/login" class="active">Log in</a>
+        </div>
+        <div class="rela-block top-bar">
+            <div class="rela-block">
+                <div class="login active-div" >
+                    <h2 style="color: #fff; float: left; text-align: left;" class="rela-block caps title">Login</h2>
+                    <div class="attributes">
+                        <input type="text" name="login_username" id="" placeholder="Username" required>
+                        <input type="password" name="login_password" id="" placeholder="Password" required>
+                    </div>
+                    <div class="actions">
+                        <button class="btn1" disabled>Login</button>
+                        <button class="btn1" hx-class=".show" hx-trigger="click" hx-target="#registration" hx-class="#registration .show">Don't have an account?</button>
+                    </div>
+                </div>
+                <div class="register" id="registration">
+                    <h2 style="color: #fff; float: left; text-align: left;" class="rela-block caps title">Register</h2>
+                    <div class="attributes">
+                        <input type="text" name="register_username" id="" placeholder="Username" required>
+                        <input type="password" name="register_password" id="" placeholder="Password" required>
+                        <input type="email" name="register_email" id="" placeholder="Email" required>
+                    </div>
+                    <div class="actions">
+                        <button class="btn1" disabled="disabled">Register</button>
+                        <button class="btn1">Already registered?</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="rela-block">
+            <iframe src="/docs" title="API documentaion" width="100%" height="960" style="border:none;"></iframe>
+        </div>
+    </div>
+    <!-- partial -->
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src="../static/script.js"></script>
+</body>
+</html>

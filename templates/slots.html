@@ -37,23 +37,23 @@
         </div>
         <div class="rela-block top-bar" style="height: 500px;">
             <div class="rela-block slots">
-                <div id="slots-output" class="rela-block slots-buffers">
-                    <p>Press 'Start' to play</p>
+                <div id="slots-output" class="rela-block slots-buffers" hx-ext="class-tools">
+                    <p style="text-align: center; margin-top: 50%;">Press 'Spin' to start</p>
                 </div>
             </div>
         </div>
         <div class="rela-block">
-            <div class="slots-controls">
+            <div class="slots-actions">
                 <button class="btn1"
                 hx-get="/slots/spin"
                 hx-trigger="click"
                 hx-target="#slots-output"
                 >Spin</button>
-                <button class="btn1"
-                hx-get="/user?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMzEiLCJleHAiOjE2Nzg4NDQ2MDB9.2_uh4VW-EvkRHBo9LgvnZGT1XaGM-XZ-qEH4HuhWiEw"
+                <button disabled class="btn1 faded"
+                hx-get="/user?access_token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIzMjEiLCJleHAiOjE2NzkzMTUyMDB9.BnY9ebTBrYq0Rfl3jmLiqzEH9pW1HQMwcziHAOhEZLE"
                 hx-trigger="click"
                 hx-target="#slots-output"
-                >Get User</button>
+                >Test button</button>
             </div>
         </div>
     </div>
