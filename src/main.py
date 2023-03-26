@@ -14,7 +14,9 @@ from .schemas import Token, User
 from .database import get_db, Base, engine
 from .models import Accounts
 from . import crud, models, schemas, slots
-from helpers import files
+from utils import files
+from .helpers import BaseEnum
+
 
 
 #TODO replace plain model and schema calls with models. schemas.
@@ -38,6 +40,13 @@ class Tags(Enum):
     projects = "Projects"
     files = "Files"
 
+class Files(str, Enum):
+    cv = 'lev_zavodskov_cv.pdf'
+    recommendation_mpi = 'recommendation_mpi.pdf'
+    manual_certificate = 'manual_certificate.pdf'
+    automation_qaguru = 'qaguru_certificate.pdf'
+    automation_stepik = 'stepik_certificate.pdf'
+
 
 @app.get("/", response_class=HTMLResponse, tags=[Tags.pages])
 async def home_page(request: Request):
@@ -49,6 +58,12 @@ async def home_page(request: Request):
 async def api_page(request: Request):
     context = {"request": request}
     return templates.TemplateResponse("api_docs.html", context)
+
+
+@app.get("/files", tags=[Tags.pages], response_class=HTMLResponse)
+async def files_page(request: Request):
+    context = {"request": request}
+    return templates.TemplateResponse("files.html", context)
 
 
 @app.get("/projects/slots", tags=[Tags.slots, Tags.pages])
@@ -102,9 +117,10 @@ async def do_spin(request: Request):
     return templates.TemplateResponse("lines.html", context)
 
 
-@app.get("/files/cv", tags=[Tags.files], response_class=FileResponse)
-async def get_cv():
-    return files.to_resource('lev_zavodskov_cv.pdf')
+@app.get("/files/{file}", tags=[Tags.files], response_class=FileResponse)
+async def get_file(file: Files):
+    for item in Files:
+        if file is item:
+            return files.to_resource(item.value)
 
-
-# 2124412
+# 2121
