@@ -99,10 +99,12 @@ def create_user(user: User, db: Session = Depends(get_db)):
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Username taken")
     return crud.create_user(db=db, user=user)
 
+
 @app.get('/user', tags=[Tags.user])
 async def fetch_user_info(access_token: str, db: Session = Depends(get_db)):
     user = auth_handler.get_current_user(db, access_token)
     return {user}
+
 
 @app.get("/slots/start", tags=[Tags.slots], response_class=HTMLResponse)
 async def start_slots_game(request: Request):
@@ -123,4 +125,4 @@ async def get_file(file: Files):
         if file is item:
             return files.to_resource(item.value)
 
-# 21241124
+# 212111241243
