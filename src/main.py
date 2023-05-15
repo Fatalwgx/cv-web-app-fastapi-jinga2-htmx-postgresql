@@ -46,6 +46,7 @@ class Files(str, Enum):
     manual_certificate = 'manual_certificate.pdf'
     automation_qaguru = 'qaguru_certificate.pdf'
     automation_stepik = 'stepik_certificate.pdf'
+    ef_set_english = 'EF_SET_Certificate.pdf'
 
 
 @app.get("/", response_class=HTMLResponse, tags=[Tags.pages])
@@ -125,4 +126,4 @@ async def get_file(file: Files):
         if file is item:
             return files.to_resource(item.value)
 
-# 212111241243
+# 212213

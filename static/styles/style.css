@@ -510,6 +510,15 @@ h3 {
   padding: 5px;
 }
 
+.login-actions {
+  padding: 5px;
+}
+
+.register-actions {
+  padding: 5px;
+}
+
+
 .faded {
   opacity: 0;
 }
@@ -543,10 +552,13 @@ h3 {
   animation-name: fade-logging;
 }
 
-
-li {
+.cell {
   font-size: 1em;
   line-height: 1em;
+}
+
+.login-fields {
+  float: left;
 }
 
 @keyframes show-registration {
