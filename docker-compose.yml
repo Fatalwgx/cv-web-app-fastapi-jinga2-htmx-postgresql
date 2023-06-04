@@ -1,8 +1,8 @@
 version: '3.5'
 networks:
   selenoid:
-    name: selenoid
-    driver: bridge
+    external:
+      name: selenoid
 services:
   api:
     build: .
