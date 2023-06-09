@@ -28,3 +28,8 @@ class UserResponse(BaseModel):
     id: int
     username: str
     last_login: datetime = None
+
+class UserCreatedResponse(BaseModel):
+    id: int
+    user: str
+    email: str

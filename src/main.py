@@ -1,14 +1,18 @@
 import uvicorn
 import os
-from fastapi import FastAPI, Request, Depends, HTTPException, status
+
+from fastapi import FastAPI, Request, Depends, HTTPException, status, Header
 from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from fastapi.security import OAuth2PasswordRequestForm
+
 from sqlalchemy.orm import Session
 from datetime import datetime, timedelta
 from dotenv import load_dotenv
 from enum import Enum
+from typing import Annotated
+
 from .auth import AuthHandler
 from .schemas import Token, User
 from .database import get_db, Base, engine
@@ -18,8 +22,9 @@ from utils import files
 from .helpers import BaseEnum
 
 
-
-#TODO replace plain model and schema calls with models. schemas.
+#TODO replace plain model and schema calls with models and schemas
+#TODO Move logic into external functions and only call it in requests
+#TODO use response model in functions
 
 
 load_dotenv()
@@ -79,8 +84,8 @@ async def login_page(request: Request):
     return templates.TemplateResponse("login.html", context)
 
 
-@app.post("/user/token", response_model=Token, tags=[Tags.user])
-async def login_for_acces_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
+@app.post("/user/login", response_model=Token, tags=[Tags.user])
+async def login_for_access_token(form_data: OAuth2PasswordRequestForm = Depends(), db: Session = Depends(get_db)):
     user = auth_handler.authenticate_user(db, form_data.username, form_data.password)
     if not user:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail="Invalid username or passowrd")
@@ -93,7 +98,7 @@ async def login_for_acces_token(form_data: OAuth2PasswordRequestForm = Depends()
     return {"acess_token": access_token, "token_type": "bearer"}
 
 
-@app.post("/users/", tags=[Tags.user])
+@app.post("/user/register", tags=[Tags.user])
 def create_user(user: User, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_username(db, user.username)
     if db_user:
@@ -101,15 +106,14 @@ def create_user(user: User, db: Session = Depends(get_db)):
     return crud.create_user(db=db, user=user)
 
 
-@app.get('/user', tags=[Tags.user])
-async def fetch_user_info(access_token: str, db: Session = Depends(get_db)):
+@app.get('/user/fetch', tags=[Tags.user])
+async def fetch_user_info(access_token: Annotated[str, Header()] = None, db: Session = Depends(get_db)):
     user = auth_handler.get_current_user(db, access_token)
     return schemas.UserResponse(
         id=user.id,
         username=user.username,
         last_login=user.last_login
     )
-
 
 
 @app.put('/change_password', tags = [Tags.user])
@@ -136,4 +140,4 @@ async def get_file(file: Files):
         if file is item:
             return files.to_resource(item.value)
 
-# 212213
+# 2122124
