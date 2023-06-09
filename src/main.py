@@ -104,7 +104,17 @@ def create_user(user: User, db: Session = Depends(get_db)):
 @app.get('/user', tags=[Tags.user])
 async def fetch_user_info(access_token: str, db: Session = Depends(get_db)):
     user = auth_handler.get_current_user(db, access_token)
-    return {user}
+    return schemas.UserResponse(
+        id=user.id,
+        username=user.username,
+        last_login=user.last_login
+    )
+
+
+
+@app.put('/change_password', tags = [Tags.user])
+async def change_password():
+    ...
 
 
 @app.get("/slots/start", tags=[Tags.slots], response_class=HTMLResponse)
