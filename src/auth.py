@@ -1,15 +1,16 @@
 import os
 from fastapi import HTTPException, Security, status, Depends
 from fastapi.security import OAuth2PasswordBearer
+
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 from datetime import datetime, timedelta
-from .models import Accounts
-from .schemas import TokenData, User, Token
 from dotenv import load_dotenv
 from sqlalchemy.orm import Session
-from .database import get_db
 
+from .database import get_db
+from .models import Accounts
+from .schemas import TokenData, User, Token
 
 load_dotenv()
 
@@ -48,18 +49,20 @@ class AuthHandler:
 
     def get_current_user(self, db, token: str = Depends(oauth2_scheme)):
         try:
+            if token is None:
+                raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail="Unauthorizaed")
             decoded_token = jwt.decode(
                 token, self.SECRET_KEY, algorithms=[self.ALGORITHM]
             )
             username: str = decoded_token.get("sub")
             if username is None:
-                return None
+                raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail="Unauthorizaed")
             token_data = TokenData(username=username)
         except JWTError:
-            return None
+            raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail="Unauthorizaed")
         user = db.query(Accounts).filter(Accounts.username == token_data.username).first()
         if user is None:
-            return None
+            raise HTTPException(status.HTTP_401_UNAUTHORIZED, detail="Unauthorizaed")
         return user
 
     def get_current_active_user(user: User = Depends(get_current_user)):
