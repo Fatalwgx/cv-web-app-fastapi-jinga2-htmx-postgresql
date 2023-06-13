@@ -45,7 +45,11 @@ git clone https://github.com/Fatalwgx/cv-web-app-fastapi-jinga2-htmx-postgresql.
 ```
 docker compose up -d --build
 ```
+<img src="https://github.com/Fatalwgx/README/blob/57640d66a053c1b66c8f9efd27ae8a4c9fc35c3a/steps/mintty_wj9xW5Jw0N.gif" height=100% alt="cv setup"/>
+
 4. Once terminal process finishes, you can check whether or not the app is available by opening http://localhost:80/ in a browser
+
+<img src="https://github.com/Fatalwgx/README/blob/57640d66a053c1b66c8f9efd27ae8a4c9fc35c3a/steps/chrome_cG5sUTUxDO.gif" height=100% alt="cv overview"/>
 
 ### Part 2 - Infrastructure
 ---
@@ -59,6 +63,8 @@ git clone https://github.com/Fatalwgx/cvwebsite-infra-docker-jenkins-selenoid
 ```
 docker compose up -d --build
 ```
+<img src="https://github.com/Fatalwgx/README/blob/57640d66a053c1b66c8f9efd27ae8a4c9fc35c3a/steps/chrome_cG5sUTUxDO.gif" height=100% alt="cv overview"/>
+
 4. Once Jenkins is up, it can be accessed at http://localhost:8888/ credentials are admin/admin
 5. From dashboard select "Regression" pipeline. This project's automation is running using the following jenkinsfile
 ```
@@ -90,5 +96,11 @@ pipeline {
 }
 
 ```
+<img src="https://github.com/Fatalwgx/README/blob/57640d66a053c1b66c8f9efd27ae8a4c9fc35c3a/steps/mintty_dbrABCoAhv.gif" height=100% alt="infra setup"/>
+
 6. Click "Build now", Jenkins will follow instructions from jenkinsfile, install, build and run test automation.
 7. Once the run is completed click on allure logo in the build history sidebar to view detailed report of the runs and it's attachemnts. (Currently there are some failures of unknown origin which dissappear after a rerun, if you're seeing this, then it means I'm still investigating it)
+
+
+<img src="https://github.com/Fatalwgx/README/blob/57640d66a053c1b66c8f9efd27ae8a4c9fc35c3a/steps/chrome_Rdp6WdkDNY.gif" height=100% alt="Jenkins and allure"/>
+
