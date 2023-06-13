@@ -15,11 +15,11 @@
 ### Purpose
 Personal project started with interest in how api's are created which ended up iflating several times way beyond the scope of my capabailities. It maybe janky, but I learned a lot with it and it actually serves it's purpose - it's a good and flexible dummy for my automation project.
 
-### Cv-web-app
+### Application
 Backend is written in python using FastAPI and pydantic for validation. "Frontend" is done by returning html documents as responses and web interactions, such as requests are done with HTMX. Application has it's own Postgres database and communicates with it on api methods level. The whole project is containerized with docker.
 
 ### Infrastructure
-[Infrastucture project](https://github.com/Fatalwgx/cvwebsite-infra-docker-jenkins-selenoid) acts as external and independent service hosting Jenkins, Selenoid and Selenoid-ui for automated test runs. Jenkins has already preconfigured plugins and pipelines with jenkisfiles for this project. Automation is runs on Jenkins' master machine, web-ui test runs on selenoid which feature video, screenshot and html-page logging to allure-reports. Through selenoid-ui sessions can be monitored, debugged and manually tested.
+[Infrastructure project](https://github.com/Fatalwgx/cvwebsite-infra-docker-jenkins-selenoid) acts as external and independent service hosting Jenkins, Selenoid and Selenoid-ui for automated test runs. Jenkins has already preconfigured plugins and pipelines with jenkisfiles for this project. Automation is runs on Jenkins' master machine, web-ui test runs on selenoid which feature video, screenshot and html-page logging to allure-reports. Through selenoid-ui sessions can be monitored, debugged and manually tested.
 
 ### Automation
 [Automation project](https://github.com/Fatalwgx/cvwebsite-automation-tests) features web-ui selenium based test, with selene as a wrapper api above selenium. Api test are performed with requests and schema validation using pydantic. These can be triggered locally, from Jenkins pipeline or can also run from a dedicated container if needed. All the test runs generate allure-reports, which in turn are attached to specific runs in Jenkins. Database interactions can performed with sqlalchemy helper directly into the database.
@@ -30,7 +30,7 @@ Backend is written in python using FastAPI and pydantic for validation. "Fronten
 ### Prerequisites
 - Make sure docker is installed
 - Make sure that docker compose v2 is enabled
-- Im using wsl2, so there's a slight possibility that something might be different
+- Im using wsl2, so there's a slight possibility that something might be different on linux
 
 ### Part 1 - Application
 ---
@@ -108,7 +108,6 @@ pipeline {
 6. Click "Build now", Jenkins will follow instructions from jenkinsfile, install, build and run test automation.
 ![chrome_q33rnbx1MN](https://github.com/Fatalwgx/README/assets/98048609/ddf83fd8-37a2-400b-8ac9-e899aa9b2e50)
 
-7. Once the run is completed click on allure logo in the build history sidebar to view detailed report of the runs and it's attachemnts. (Currently there are some failures of unknown origin which dissappear after a rerun, if you're seeing this, then it means I'm still investigating it)
-
+7. Once the run is completed click on allure logo in the build history sidebar to view detailed report of the runs and it's attachemnts.
 ![chrome_Rdp6WdkDNY](https://github.com/Fatalwgx/README/assets/98048609/ffa10dba-61ad-4ee0-99f0-73f0ed9bc41a)
 
