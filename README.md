@@ -59,6 +59,10 @@ docker compose up -d --build
 - Api Swagger Documentation
 ![chrome_HaL5XIXayY](https://github.com/Fatalwgx/README/assets/98048609/c03684e4-fd83-4ac3-85d3-1893be58701c)
 
+- Users schema overview from db
+![dbeaver_dPR3sPDtz5](https://github.com/Fatalwgx/README/assets/98048609/3b70889d-2634-4752-a849-ac1911e977b3)
+
+
 ### Part 2 - Infrastructure
 ---
 1. Change directory to your preference
