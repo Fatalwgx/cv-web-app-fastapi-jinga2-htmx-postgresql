@@ -71,14 +71,18 @@ This one will take sometime because Jenkins is already installed and weights aro
 ```
 git clone https://github.com/Fatalwgx/cvwebsite-infra-docker-jenkins-selenoid
 ```
-3. Start docker compose with image build option in detached mode. Might take a few minutes for Jenkins to initialize completely.
+3. Pull browser images
+```
+docker pull selenoid/chrome:112.0
+```
+4. Start docker compose with image build option in detached mode. Might take a few minutes for Jenkins to initialize completely.
 ```
 docker compose up -d --build
 ```
 ![mintty_dbrABCoAhv](https://github.com/Fatalwgx/README/assets/98048609/e453509e-dd1a-4099-ab80-b611cc8e1f85)
 
-4. Once Jenkins is up, it can be accessed at http://localhost:8888/ credentials are admin/admin
-5. From dashboard select "Regression" pipeline. This project's automation is running using the following jenkinsfile
+5. Once Jenkins is up, it can be accessed at http://localhost:8888/ credentials are admin/admin
+6. From dashboard select "Regression" pipeline. This project's automation is running using the following jenkinsfile
 ```
 pipeline {
     agent any
@@ -109,9 +113,9 @@ pipeline {
 
 ```
 
-6. Click "Build now", Jenkins will follow instructions from jenkinsfile, install, build and run test automation.
+7. Click "Build now", Jenkins will follow instructions from jenkinsfile, install, build and run test automation.
 ![chrome_q33rnbx1MN](https://github.com/Fatalwgx/README/assets/98048609/ddf83fd8-37a2-400b-8ac9-e899aa9b2e50)
 
-7. Once the run is completed click on allure logo in the build history sidebar to view detailed report of the runs and it's attachemnts.
+8. Once the run is completed click on allure logo in the build history sidebar to view detailed report of the runs and it's attachemnts.
 ![chrome_Rdp6WdkDNY](https://github.com/Fatalwgx/README/assets/98048609/ffa10dba-61ad-4ee0-99f0-73f0ed9bc41a)
 
